@@ -44,18 +44,20 @@ flowchart TD
     StaticOutput --> End([End])
     InteractiveOutput --> End
     
-    style Validate fill:#e1f5ff
-    style Small fill:#e1f5ff
-    style Full fill:#e1f5ff
-    style Post fill:#fff4e1
-    style VizStatic fill:#e8f5e9
-    style VizInteractive fill:#e8f5e9
-    style ValOutput fill:#f3e5f5
-    style SmallOutput fill:#f3e5f5
-    style FullOutput fill:#f3e5f5
-    style PostOutput fill:#fff9c4
-    style StaticOutput fill:#c8e6c9
-    style InteractiveOutput fill:#c8e6c9
+    style Validate fill:transparent,stroke:#2196F3,stroke-width:2px,color:#1976D2
+    style Small fill:transparent,stroke:#2196F3,stroke-width:2px,color:#1976D2
+    style Full fill:transparent,stroke:#2196F3,stroke-width:2px,color:#1976D2
+    style Post fill:transparent,stroke:#FF9800,stroke-width:2px,color:#F57C00
+    style VizStatic fill:transparent,stroke:#4CAF50,stroke-width:2px,color:#388E3C
+    style VizInteractive fill:transparent,stroke:#4CAF50,stroke-width:2px,color:#388E3C
+    style ValOutput fill:transparent,stroke:#9C27B0,stroke-width:2px,stroke-dasharray: 5 5
+    style SmallOutput fill:transparent,stroke:#9C27B0,stroke-width:2px,stroke-dasharray: 5 5
+    style FullOutput fill:transparent,stroke:#9C27B0,stroke-width:2px,stroke-dasharray: 5 5
+    style PostOutput fill:transparent,stroke:#FBC02D,stroke-width:2px,stroke-dasharray: 5 5
+    style StaticOutput fill:transparent,stroke:#66BB6A,stroke-width:2px,stroke-dasharray: 5 5
+    style InteractiveOutput fill:transparent,stroke:#66BB6A,stroke-width:2px,stroke-dasharray: 5 5
+    style Start fill:transparent,stroke:#424242,stroke-width:3px
+    style End fill:transparent,stroke:#424242,stroke-width:3px
 ```
 
 ## Usage
