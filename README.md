@@ -19,6 +19,45 @@ Deterministic alphabetical order (A < B < C < D < E). When scores tie, the lower
 ## Reproducibility
 All runs can be seeded with `--seed`. Given the same seed, results are deterministic.
 
+## Pipeline Flow
+
+```mermaid
+flowchart TD
+    Start([Start]) --> Validate[Validate Randomness<br/>python simulate.py validate]
+    Validate --> ValOutput[analysis/validation/<br/>uniform_10k.json<br/>uniform_1M.json<br/>pairwise.json<br/>independence.json]
+    
+    ValOutput --> Small[Small Test<br/>python simulate.py small]
+    Small --> SmallOutput[data/raw/<br/>run_0001.json to run_0010.json<br/>10 runs × 50 steps]
+    
+    SmallOutput --> Full[Full Generation<br/>python simulate.py full]
+    Full --> FullOutput[data/raw/<br/>run_0001.json to run_1000.json<br/>1000 runs × 500 steps]
+    
+    FullOutput --> Post[Post-Processing<br/>python simulate.py post]
+    Post --> PostOutput[analysis/aggregate_stats.json<br/>data/processed/<br/>features.npy, labels.npy]
+    
+    PostOutput --> VizStatic[Static Visualization<br/>python simulate.py visualize]
+    VizStatic --> StaticOutput[visualizations/static/<br/>*.png files]
+    
+    PostOutput --> VizInteractive[Interactive Visualization<br/>python simulate.py visualize-interactive]
+    VizInteractive --> InteractiveOutput[visualizations/interactive/<br/>*.html files]
+    
+    StaticOutput --> End([End])
+    InteractiveOutput --> End
+    
+    style Validate fill:#e1f5ff
+    style Small fill:#e1f5ff
+    style Full fill:#e1f5ff
+    style Post fill:#fff4e1
+    style VizStatic fill:#e8f5e9
+    style VizInteractive fill:#e8f5e9
+    style ValOutput fill:#f3e5f5
+    style SmallOutput fill:#f3e5f5
+    style FullOutput fill:#f3e5f5
+    style PostOutput fill:#fff9c4
+    style StaticOutput fill:#c8e6c9
+    style InteractiveOutput fill:#c8e6c9
+```
+
 ## Usage
 1. Install dependencies:
 ```bash
