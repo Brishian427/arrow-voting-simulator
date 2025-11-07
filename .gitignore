@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Generated data (too large for git)
+data/raw/*.json
+data/processed/*.npy
+data/processed/*.pkl
+
+# Analysis outputs (can be regenerated)
+analysis/validation/*.json
+analysis/aggregate_stats.json
+
+# Visualizations (can be regenerated)
+visualizations/static/*.png
+visualizations/interactive/*.html
+visualizations/interactive/*.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Keep directory structure but ignore contents
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!analysis/validation/.gitkeep
+!visualizations/static/.gitkeep
+!visualizations/interactive/.gitkeep
+
