@@ -19,6 +19,41 @@ Deterministic alphabetical order (A < B < C < D < E). When scores tie, the lower
 ## Reproducibility
 All runs can be seeded with `--seed`. Given the same seed, results are deterministic.
 
+## Progressive Simulation Algorithm
+
+The core algorithm accumulates voters progressively, recalculating winners at each step with all previous voters' preferences preserved:
+
+```mermaid
+flowchart TD
+    Start([Start Simulation Run]) --> Init[Initialize: prefs_all = empty array<br/>step = 0]
+    Init --> Check{step < max_voters?}
+    
+    Check -->|Yes| Generate[Generate 1 new preference<br/>Random permutation of candidates A-E]
+    Generate --> Append[Append to prefs_all<br/>prefs_all = prefs_all + new_pref]
+    Append --> Compute[Compute Winners with ALL preferences<br/>Plurality, Borda, Condorcet, IRV]
+    
+    Compute --> Record[Record State<br/>step, all voter_preferences, winners]
+    Record --> Increment[step = step + 1]
+    Increment --> Check
+    
+    Check -->|No| End([End Run])
+    
+    style Start fill:transparent,stroke:#424242,stroke-width:3px
+    style End fill:transparent,stroke:#424242,stroke-width:3px
+    style Init fill:transparent,stroke:#2196F3,stroke-width:2px,color:#1976D2
+    style Generate fill:transparent,stroke:#4CAF50,stroke-width:2px,color:#388E3C
+    style Append fill:transparent,stroke:#FF9800,stroke-width:2px,color:#F57C00
+    style Compute fill:transparent,stroke:#9C27B0,stroke-width:2px,color:#7B1FA2
+    style Record fill:transparent,stroke:#FBC02D,stroke-width:2px,color:#F9A825
+    style Check fill:transparent,stroke:#607D8B,stroke-width:2px,color:#455A64
+```
+
+**Key Points:**
+- Each step adds exactly **one new voter** to the accumulated set
+- All **previous preferences are preserved** (never modified or removed)
+- Winners are **recalculated from scratch** at each step using the full accumulated preference matrix
+- This creates a progressive view of how winners change as more voters participate
+
 ## Pipeline Flow
 
 ```mermaid
