@@ -52,14 +52,18 @@ You can specify which runs to visualize: `python simulate.py visualize-interacti
 
 ## Outputs
 
+**Note**: The following directories are automatically created when you run the simulation commands. They are not included in the git repository but will be generated locally.
+
 ### Data Directory (`data/`)
+Created by: `python simulate.py small` or `python simulate.py full`
 - `data/raw/run_XXXX.json`: Individual simulation run records (1000 files)
-- `data/processed/`: ML-ready processed data
+- `data/processed/`: ML-ready processed data (created by `python simulate.py post`)
   - `features.npy`: Input features for machine learning
   - `labels.npy`: Target labels (winners)
   - `metadata.json`: Data format documentation
 
 ### Analysis Directory (`analysis/`)
+Created by: `python simulate.py validate` and `python simulate.py post`
 - `analysis/validation/`: Randomness validation tests
   - `uniform_10k.json`: Uniformity test (10k samples)
   - `uniform_1M.json`: Uniformity test (1M samples)
@@ -68,6 +72,7 @@ You can specify which runs to visualize: `python simulate.py visualize-interacti
 - `analysis/aggregate_stats.json`: Summary statistics across all runs
 
 ### Visualizations Directory (`visualizations/`)
+Created by: `python simulate.py visualize` and `python simulate.py visualize-interactive`
 - `visualizations/static/`: Static PNG plots
   - `winner_evolution.png`: Winner changes over steps
   - `winner_distribution.png`: Winner frequency by candidate
