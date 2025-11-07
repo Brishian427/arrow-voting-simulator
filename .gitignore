@@ -44,3 +44,8 @@ Thumbs.db
 !visualizations/static/.gitkeep
 !visualizations/interactive/.gitkeep
 
+# Setup/documentation files (not needed in repo)
+GITHUB_SETUP.md
+PUSH_TO_GITHUB.md
+REORGANIZATION_PLAN.md
+
