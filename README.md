@@ -1,4 +1,6 @@
-# Universal Voting Pattern Data Generator
+# Arrow Voting Simulator
+
+A comprehensive simulation system for progressive election analysis under multiple voting rules.
 
 This project simulates rolling elections with 5 candidates (A–E), generating per-step outcomes for multiple voting rules to produce ML-ready datasets.
 
